@@ -2,6 +2,7 @@ package visao;
 
 import controle.ContatoControle;
 import java.util.Scanner;
+import modelo.Contato;
 
 public class SystemAgenda {
 
@@ -9,6 +10,9 @@ public class SystemAgenda {
         int op;
 
         ContatoControle agenda = new ContatoControle();
+        Contato jogador = new Contato();
+        
+        
 
         while (true) {
 
@@ -23,13 +27,24 @@ public class SystemAgenda {
                 case 1:
                     agenda.cadastrarContato();
                     break;
-                           
+                 
                 case 4:
                     agenda.listarAgendaContato();
                     break;
 
                 case 5:
                     agenda.visualizarAgendaContato();
+                    break;
+                    
+                case 7:
+                  String jogadorProcurado = lerPesquisaJogador();
+                  
+                  if(jogador.getNomeJogador().equals(jogadorProcurado)) {
+                      agenda.visualizarAgendaContato();
+                  } else {
+                      System.out.println("Jogador não encontrado no systemNBA");
+                  }
+                  
                     break;
             }
         }
@@ -55,5 +70,16 @@ public class SystemAgenda {
         op = ler.nextInt();
 
         return op;
+    }
+    
+    public static String lerPesquisaJogador() {
+        Scanner ler = new Scanner(System.in);
+        
+        String jogadorProcurado = null;
+        
+        System.out.println("Digite o nome do jogador para a pesquisa: ");
+        jogadorProcurado = ler.next();
+        
+        return jogadorProcurado;
     }
 }

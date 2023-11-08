@@ -53,4 +53,19 @@ public class ContatoControle {
 
         System.out.println("----------------------------");
     }
+    
+    public Contato pesquisarJogador(String jogadorProcurado) {
+        System.out.println("...::: Pesquisando Jogador ::...");
+        System.out.println("----------------------------");
+        
+        Contato jogadorAux = new Contato();
+        
+        for (int i = 0; i < agendaContatos.size(); i++) {
+            if(agendaContatos.get(i).getNomeJogador().equals(jogadorProcurado)){
+                jogadorAux = agendaContatos.get(i);
+            }
+            
+        }
+        return jogadorAux;
+    }
 }
